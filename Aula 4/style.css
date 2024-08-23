@@ -1,9 +1,24 @@
 body{
-    color:white;
-    background-color: black;
+    color:grey;
+    /*background-image: linear-gradient(white, rgb(191, 230, 245)); */
+    /* inseri multiplas cores nas paginas*/
+    background-image: url("https://th.bing.com/th/id/R.be080585c0da64067404b23530a814ce?rik=9HpY7TmmexLOhg&pid=ImgRaw&r=0");
+    
 }
 
-p{
-    color:white;
-    background-color: black;
+
+p, ul{
+    color:blueviolet;
+    background-color: lightblue;
+    font-size: 20px;
+    text-align:center; 
+    padding: 0 15px 15px 15px;
+    margin: auto;
+    border: 5px solid rgb(226, 83, 83);
+}
+.Titulo{/*class*/
+
+}
+#seletor {/*id*/
+
 }
