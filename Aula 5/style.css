@@ -1,0 +1,21 @@
+*{
+    margin:o auto;
+    padding:0;
+}
+.menu-horizontal{
+    background-color: rgb(174, 238, 233);
+}
+.menu-horizontal ul{
+    max-width: 800px;
+}
+.menu-horizontal ul li{
+    display:inline;/* deixa o menu na horizontal*/
+    /*border-style: dashed;  Usado para testa o centro usando a borda*/
+}
+.menu-horizontal ul li a {
+    color:#300e0e;/* Text*/
+    padding: 20px
+    /*display: inline-block;*/
+    text-decoration; none; /*retira padrão do hiperlink */
+
+}
