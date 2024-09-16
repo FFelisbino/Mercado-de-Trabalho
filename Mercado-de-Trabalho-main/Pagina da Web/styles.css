@@ -1,0 +1,19 @@
+body{
+    background-color:#f0f0f0
+}
+header{
+    background-color: #0000ff;
+    color:#ffffff;
+}
+main{
+    background-color: white;
+    margin: 20px;
+}
+footer{
+    background-color: #cccccc;
+    text-align: center;
+}
+h1{
+    color:#0000ff;
+    font-size: 24px;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Produção</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Programação e Controle da Produção</h1>
+    <form id="productionForm">
+        <label for="vim">Número VIM:</label>
+        <input type="text" id="vim" name="vim" required><br><br>
+
+        <label for="defeito">Adicionar Defeito:</label>
+        <input type="text" id="defeito" name="defeito"><br><br>
+
+        <button type="button" onclick="adicionarEntrada()">Adicionar Entrada</button>
+        <button type="button" onclick="adicionarDefeito()">Adicionar Defeito</button>
+        <button type="button" onclick="adicionarSaida()">Adicionar Saída</button>
+    </form>
+
+    <h2>Registros</h2>
+    <table id="tabelaRegistros">
+        <tr>
+            <th>Número VIM</th>
+            <th>Data de Entrada</th>
+            <th>Defeitos</th>
+            <th>Data de Saída</th>
+        </tr>
+    </table>
+
+    <script>
+        let registros = [];
+
+        function adicionarEntrada() {
+            const vim = document.getElementById('vim').value;
+            const dataEntrada = new Date().toLocaleString();
+            
+            // Cria um novo registro
+            const registro = {
+                vim: vim,
+                dataEntrada: dataEntrada,
+                defeitos: [],
+                dataSaida: ""
+            };
+            
+            // Adiciona o registro à lista
+            registros.push(registro);
+            atualizarTabela();
+        }
+
+        function adicionarDefeito() {
+            const vim = document.getElementById('vim').value;
+            const defeito = document.getElementById('defeito').value;
+            
+            // Encontra o registro pelo número VIM e adiciona o defeito
+            for (let registro of registros) {
+                if (registro.vim === vim) {
+                    registro.defeitos.push(defeito);
+                    break;
+                }
+            }
+            atualizarTabela();
+        }
+
+        function adicionarSaida() {
+            const vim = document.getElementById('vim').value;
+            const dataSaida = new Date().toLocaleString();
+            
+            // Encontra o registro pelo número VIM e adiciona a data de saída
+            for (let registro of registros) {
+                if (registro.vim === vim) {
+                    registro.dataSaida = dataSaida;
+                    break;
+                }
+            }
+            atualizarTabela();
+        }
+
+        function atualizarTabela() {
+            const tabela = document.getElementById('tabelaRegistros');
+            tabela.innerHTML = `
+                <tr>
+                    <th>Número VIM</th>
+                    <th>Data de Entrada</th>
+                    <th>Defeitos</th>
+                    <th>Data de Saída</th>
+                </tr>
+            `;
+            
+            // Preenche a tabela com os registros
+            for (let registro of registros) {
+                let defeitos = registro.defeitos.join(", ");
+                tabela.innerHTML += `
+                    <tr>
+                        <td>${registro.vim}</td>
+                        <td>${registro.dataEntrada}</td>
+                        <td>${defeitos}</td>
+                        <td>${registro.dataSaida}</td>
+                    </tr>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

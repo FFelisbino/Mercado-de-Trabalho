@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Produção</title>
+</head>
+<body>
+    <h1>Controle de Produção</h1>
+    <form id="productionForm">
+        <label for="itemNumber">Número do Item:</label>
+        <input type="text" id="itemNumber" required>
+        <br>
+        <label for="entryDate">Data de Entrada:</label>
+        <input type="date" id="entryDate" required>
+        <br>
+        <label for="exitDate">Data de Saída:</label>
+        <input type="date" id="exitDate" required>
+        <br>
+        <label for="defects">Defeitos:</label>
+        <textarea id="defects"></textarea>
+        <br>
+        <button type="submit">Adicionar</button>
+    </form>
+    <h2>Histórico de Produção</h2>
+    <table id="productionTable" border="1">
+        <thead>
+            <tr>
+                <th>Número do Item</th>
+                <th>Data de Entrada</th>
+                <th>Data de Saída</th>
+                <th>Defeitos</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
