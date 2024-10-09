@@ -1,0 +1,69 @@
+class ContaBancaria {
+  constructor(agencia, numero, tipo, saldo) {
+    this.agencia = agencia;
+    this.numero = numero;
+    this.tipo = tipo;
+    this.saldo = saldo;
+  }
+
+  sacar(valor) {
+    if (this.saldo >= valor) {
+      this.saldo -= valor;
+      console.log(`Saque realizado com sucesso! Saldo atual: R$${this.saldo}`);
+    } else {
+      console.log('Saldo insuficiente!');
+    }
+  }
+
+  depositar(valor) {
+    this.saldo += valor;
+    console.log(`Depósito realizado com sucesso! Saldo atual: R$${this.saldo}`);
+  }
+}
+
+class ContaCorrente extends ContaBancaria {
+  constructor(agencia, numero, saldo, cartaoCredito) {
+    super(agencia, numero, 'conta corrente', saldo);
+    this.cartaoCredito = cartaoCredito;
+  }
+
+  get cartaoCredito() {
+    return this._cartaoCredito;
+  }
+
+  set cartaoCredito(valor) {
+    this._cartaoCredito = valor;
+  }
+}
+
+class ContaPoupanca extends ContaBancaria {
+  constructor(agencia, numero, saldo) {
+    super(agencia, numero, 'conta poupança', saldo);
+  }
+}
+
+class ContaUniversitaria extends ContaBancaria {
+  constructor(agencia, numero, saldo) {
+    super(agencia, numero, 'conta universitária', saldo);
+  }
+
+  sacar(valor) {
+    if (valor > 500) {
+      console.log('Limite de saque excedido para contas universitárias.');
+    } else {
+      super.sacar(valor);
+    }
+  }
+}
+
+// Exemplo de uso:
+const minhaContaCorrente = new ContaCorrente(123, 456, 1000, true);
+minhaContaCorrente.sacar(500);
+minhaContaCorrente.depositar(200);
+
+const minhaContaPoupanca = new ContaPoupanca(123, 789, 500);
+minhaContaPoupanca.sacar(200);
+
+const minhaContaUniversitaria = new ContaUniversitaria(123, 1011, 300);
+minhaContaUniversitaria.sacar(400);
+minhaContaUniversitaria.sacar(600);
